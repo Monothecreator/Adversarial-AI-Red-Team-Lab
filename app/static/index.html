@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10242b">
+  <title>Red-Team Lab | Security Console</title>
+  <link rel="stylesheet" href="/dashboard/static/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">RT</span>
+        <div>
+          <p class="eyebrow">CONTROLLED EVALUATION</p>
+          <h1>Red-Team Lab</h1>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span class="connection"><span class="dot" id="health-dot"></span><span id="health-label">Checking service</span></span>
+        <label class="key-field"><span>API key</span><input id="api-key" type="password" placeholder="local-dev-key" autocomplete="off"></label>
+        <button class="button button-primary" id="run-button" type="button">Run attack suite</button>
+      </div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="eyebrow">SECURITY OPERATIONS / LIVE SANDBOX</p>
+        <h2>Find the weak signal<br><em>before it becomes impact.</em></h2>
+        <p class="intro-copy">A repeatable attack, detect, defend, and retest loop for LLM applications.</p>
+      </div>
+      <div class="run-meta">
+        <span>LAST EVALUATION</span>
+        <strong id="last-run">Waiting for first run</strong>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Evaluation metrics">
+      <article class="metric-card metric-score">
+        <div class="metric-heading"><span>Resilience score</span><span class="metric-icon">+</span></div>
+        <strong class="metric-value" id="score-value">--</strong>
+        <div class="meter"><span id="score-meter"></span></div>
+        <small id="score-caption">Run the suite to calculate coverage</small>
+      </article>
+      <article class="metric-card">
+        <div class="metric-heading"><span>Attacks tested</span><span class="metric-icon">#</span></div>
+        <strong class="metric-value" id="total-value">--</strong>
+        <small>Across registered attack families</small>
+      </article>
+      <article class="metric-card">
+        <div class="metric-heading"><span>Blocked</span><span class="metric-icon">!</span></div>
+        <strong class="metric-value" id="blocked-value">--</strong>
+        <small id="blocked-caption">Awaiting evaluation</small>
+      </article>
+      <article class="metric-card">
+        <div class="metric-heading"><span>Needs review</span><span class="metric-icon">?</span></div>
+        <strong class="metric-value" id="review-value">--</strong>
+        <small>Flagged or passed defenses</small>
+      </article>
+    </section>
+
+    <section class="workspace-grid">
+      <article class="panel attack-panel">
+        <div class="panel-header">
+          <div><p class="eyebrow">ATTACK SURFACE</p><h3>Scenario results</h3></div>
+          <label class="select-wrap">Filter <select id="family-filter"><option value="all">All families</option></select></label>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Scenario</th><th>Family</th><th>Status</th><th>Severity</th><th>Score</th><th>Response evidence</th></tr></thead>
+            <tbody id="results-body"><tr><td colspan="6" class="empty-state">Run the attack suite to populate results.</td></tr></tbody>
+          </table>
+        </div>
+      </article>
+
+      <aside class="panel signal-panel">
+        <div class="panel-header"><div><p class="eyebrow">CONTROL SIGNALS</p><h3>Category posture</h3></div></div>
+        <div id="category-list" class="category-list"><p class="empty-state">No category data yet.</p></div>
+        <div class="legend"><span><i class="legend-blocked"></i>Blocked</span><span><i class="legend-flagged"></i>Flagged</span><span><i class="legend-passed"></i>Passed</span></div>
+      </aside>
+    </section>
+
+    <section class="panel history-panel">
+      <div class="panel-header"><div><p class="eyebrow">REGRESSION MEMORY</p><h3>Historical runs</h3></div><span class="history-note">Newest evaluations first</span></div>
+      <div id="history-list" class="history-list"><p class="empty-state">No persisted runs yet.</p></div>
+    </section>
+
+    <footer><span>Adversarial AI Red-Team Lab</span><span>Sandbox data only</span><span id="error-message" role="status"></span></footer>
+  </main>
+  <script src="/dashboard/static/app.js" defer></script>
+</body>
+</html>
