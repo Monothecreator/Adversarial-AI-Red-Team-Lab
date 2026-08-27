@@ -10,8 +10,8 @@ An automated AI security testing platform that attacks an LLM-powered applicatio
 - Simulate RAG poisoning scenarios
 - Validate tool authorization boundaries
 - Produce a repeatable security score and report
-
-  https://miniature-system-4jvr7wp455q5hwv-8001.app.github.dev/
+[
+https://miniature-system-4jvr7wp455q5hwv-8001.app.github.dev/dashboard
 
 ## Quick start
 
