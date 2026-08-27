@@ -65,7 +65,7 @@ class OllamaProvider:
         try:
             with urlopen(request, timeout=self.timeout_seconds) as response:  # nosec B310
                 payload = json.load(response)
-        except (HTTPError, URLError, TimeoutError) as exc:
+        except (HTTPError, URLError, TimeoutError, OSError) as exc:
             raise RuntimeError(f"Ollama request failed: {exc}") from exc
         except json.JSONDecodeError as exc:
             raise RuntimeError("Ollama returned invalid JSON.") from exc
